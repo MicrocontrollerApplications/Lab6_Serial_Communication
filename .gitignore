@@ -1,0 +1,10 @@
+Lab6_Serial_Communication.X/debug/
+Lab6_Serial_Communication.X/build/
+Lab6_Serial_Communication.X/dist/
+Lab6_Serial_Communication.X/nbproject/*
+!Lab6_Serial_Communication.X/nbproject/configurations.xml
+!Lab6_Serial_Communication.X/nbproject/project.xml
+
+*.log*
+/Lab6_Serial_Communication.X/build/
+/Lab6_Serial_Communication.X/dist/
