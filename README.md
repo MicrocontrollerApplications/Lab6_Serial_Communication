@@ -78,7 +78,7 @@ Calculate the according Serial Port Baud Rate Generator (SPBRG) value for both b
 >$Error = \frac{Baudrate_{calculated}}{Baudrate_{desired}} - 1$
 
 Now that you know the two relevant values for SPBRG, add them to your code.
-<span style="color:red">Add link to relevant lines of code (permalink on GitHub</span>
+https://github.com/MicrocontrollerApplications/Lab6_Serial_Communication/blob/94585897ba46ce567c4d0c2c969368213d2e4915/Lab6_Serial_Communication.X/main.c#L59-L62
 
 Now, we need to investigate the provided function __Open1USART__. This a convenience function implemented by Volker-Schilling-Kästle to help you configuring the (E)USART module. 
 To check ist press and hold _STRG_ and click on the function (first appearence should be in line <span style="color:red">XYZ</span>).
