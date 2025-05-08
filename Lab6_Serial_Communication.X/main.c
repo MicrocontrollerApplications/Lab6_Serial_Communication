@@ -61,14 +61,14 @@ void __init(void) {
     // sprbg for 115.2 kBaud
     // unsigned int spbrg_value = ??;
     // TODO: configure using plib_usart Open1USART(....)
-    //....
+    // Open1USART()
 
 
     // this has to be set manually because PLIB_USART does not support this (yet?)
     TXSTA1bits.SENDB = 0; // do not send sync break
 
     // TODO: configure using plib_usart baud1USART(....)   
-    //...
+    // baud1USART()
 
     /***************************************************/
     // Configure AD module (measurement time 0.2 ms @ 4 MHz Fosz)
