@@ -70,6 +70,7 @@ First step for configuring our (E)USART module is to agree on a Baudrate that is
 To get used to the handling of baud rates, we will agree on the two following ones
 1. 19,200 Baud (19.2 kBaud)
 2. 115,200 Baud (115.2 kBaud)
+
 Calculate the according Serial Port Baud Rate Generator (SPBRG) value for both baud rates, using the given formula in the datasheet (see page 272).
 >[!IMPORTANT]
 >Assume below values for SYNC, BRG16, and BRGH to choose the correct formla from table 16-3
