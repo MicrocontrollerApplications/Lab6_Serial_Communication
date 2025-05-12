@@ -114,18 +114,22 @@ Analyze the code with the help of the datasheet. The relevant register therefore
 >It might be beneficial for you to write down the byte (e.g. 0b_abcdefgh_) and note each bits individual purpose, before setting up the configuration.
 
 For the purpose of this laboratory, enable below listed functionalities:
-- asynchronous mode for communication
-- 8 bit mode
-- high speed baud generation active
-- 19.2 kBaud (we will use 115.2 kBaud later)
+1. Mode shall be set to asynchronous
+2. bitwidth shall be set to 8 bit (instead of 9)
+3. master or slave can be ignored (synchronous mode feature only)
+4. receive mode shall be set to continous
+5. high Baudrate generator shall be used
+6. Address detect enable doesn't matter
+7. Tx interrupt shall be disabled
+8. Rx interrupt shall be enabled
+9. 19.2 kBaud (we will use 115.2 kBaud later)
 
 Now that those parameters are set, we need to use __baud1USART__ to configure the Baudrate generator so that it generates and interprets the relevant signals for us.
 Therefore, go to page 271 of the datsheet and check the available configurations of __DTRXP__, __CKTXP__ and __BRG16__. Aks yourself how they can be used to realize below requirements.
 1. _RX_ shall be active high
 2. _TX_ shall be __idle__ high
-3. 16 Bit Baudrate generator shall be used
-4. Wake-Up shall be disabled
-5. Auto-Baud detection shall be disabled
+3. Wake-Up shall be disabled
+4. Auto-Baud detection shall be disabled 
 
 When everything is configured proceed to Exercise 3.
 
