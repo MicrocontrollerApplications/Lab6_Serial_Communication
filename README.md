@@ -1,10 +1,19 @@
 # Lab6_Serial_Communication
 In today's laboratory, we will use the (E)USART module to interact with our Microcontroller.
 Therefore, we will configure the module so that it enables asynchronous communication. This communication will take place between the Microcontroller an our PC (using [HTerm](https://fs.hs-ulm.de/public/mmunz/Lehre/MCON/programs/)).
->[!IMPORTANT]
+>[!NOTE]
 >click on the HTerm Link above and download hterm.exe to your PC. You will need it later!
 
 Using this communication, we will then enable ourselves to write text to the LCD and start Analog to Digital Conversions.
+
+>[!WARNING]
+>Please ask for a second USB cable and connect it to the board as shown below. Connect the other side of the cable to you PC (into any USB-Port of your choice).
+>![](images/2ndUSB.jpeg)
+
+> [!TIP]
+> In case you need the manual for Git again, click [here](https://github.com/MicrocontrollerApplications/Utilities/blob/main/git.md)
+> If you need the development board's schematic, click [here](https://raw.githubusercontent.com/MicrocontrollerApplications/Lab2_InputOutput/refs/heads/main/images/uCquick_Board_2018_01.svg)
+> The latest datasheet can be found [here](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/PIC18%28L%29F2X-4XK22-Data-Sheet-40001412H.pdf)
 
 ## Relevant registers
 For today's laboratory we will need the previously used registers to configure our Oscillator, I/O pins, Interrutps, Analog to Digital Conversion and the (E)USART registers introduced in the lecture. All relevant registers (except (E)USART) are listed below, for repetition. 
@@ -25,7 +34,7 @@ For today's laboratory we will need the previously used registers to configure o
 <tr><th align="left">PORTB</th><td> reads the logic level at the pin: "0" = 0-0.8 V, "1" = Vdd (1.6-3.3 V or 2.0-5.0 V for TTL inputs)</td></tr>
 <tr><th align="left">LATB</th><td> set the output voltage of a pin: "0" = 0 V, "1" = Vdd (3.3 V or 5 V)</td></tr>
 <tr><th align="left">ANSELB</th><td> sets a pin as digital or analog: "0" = digital, "1" = analog</td></tr>
-<tr><th align="left">OSCCON</th><td> sets the oscillator freq.: 0x50 = 4 MHz, 0x30 = 1 MHz. The instruction freq. are 1 MHz and 250 kHz respectively</td></tr>
+<tr><th align="left">OSCCON</th><td> sets the oscillator freq. E.g.: 0x50 = 4 MHz, 0x30 = 1 MHz. The instruction freq. are 1 MHz and 250 kHz respectively</td></tr>
 <tr><th align="left"><i>Register</i>bits.X</th><td> TRISBbits.TRISB3 or LATBbits.LATB3 or PORTBbits.RB3 is the direct access to the bit 3 via a struct (see structures in C).</td></tr>
 </table>
 </details>
@@ -81,10 +90,12 @@ Calculate the according Serial Port Baud Rate Generator (SPBRG) value for both b
 Now that you know the two relevant values for SPBRG, add them to your code (see position below).
 https://github.com/MicrocontrollerApplications/Lab6_Serial_Communication/blob/94585897ba46ce567c4d0c2c969368213d2e4915/Lab6_Serial_Communication.X/main.c#L59-L62
 
-Now, we need to investigate the provided function __Open1USART__. This a convenience function implemented by Volker-Schilling-Kästle to help you configuring the (E)USART module. 
-To check this uncomment below shown line of code, press and hold _STRG_ and click on the function. 
+Now, we need to investigate the provided function __Open1USART__. This a convenience function implemented to help you configuring the (E)USART module. 
+To check this function uncomment below shown line of code, press and hold _STRG_ and click on the function. 
 https://github.com/MicrocontrollerApplications/Lab6_Serial_Communication/blob/29a2903f40eddcf5d6606a43ee9e956a7af7c2e8/Lab6_Serial_Communication.X/main.c#L64
-Now, a header file containing Open1USART should have opened. If so, repeat the procedure to get to the implementation of the function. If not, ask for help.
+Now, a the source file containing Open1USART's implementation should have opened. If so, you can now investigate its functionality. If not, ask for help.
+
+When done with analysis of __Open1USART__, repeat the procedure for __baud1USART__.
 
 Analyze the code with the help of the datasheet. The relevant register therefore are:
 <table>
@@ -110,15 +121,16 @@ For the purpose of this laboratory, enable below listed functionalities:
 
 Now that those parameters are set, we need to use __baud1USART__ to configure the Baudrate generator so that it generates and interprets the relevant signals for us.
 Therefore, go to page 271 of the datsheet and check the available configurations of __DTRXP__, __CKTXP__ and __BRG16__. Aks yourself how they can be used to realize below requirements.
-1. _RX_ and _TX_ lines shall be active low
-2. 16 Bit Baudrate generator shall be used
-3. Wake-Up shall be disabled
-4. Auto-Baud detection shall be disabled
+1. _RX_ shall be active low
+2. _TX_ shall be __idle__ high
+3. 16 Bit Baudrate generator shall be used
+4. Wake-Up shall be disabled
+5. Auto-Baud detection shall be disabled
 
 When everything is configured proceed to Exercise 3.
 
 ## Exercise 3 - check functionality
-Now that everything is set up, we need to start HTerm on our Computer and plug in the second USB-cable. 
+Now that everything is set up, we need to start HTerm on our Computer and plug in the second USB-cable (if not already done). 
 ![](images/2ndUSB.jpeg)
 Above image shows where the second USB cable needs to be plugged in (see red circle). The PICkit3 needs to be attached to be board as usual.
 Now start hterm.exe and connect it with the development board.
