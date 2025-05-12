@@ -121,7 +121,7 @@ For the purpose of this laboratory, enable below listed functionalities:
 
 Now that those parameters are set, we need to use __baud1USART__ to configure the Baudrate generator so that it generates and interprets the relevant signals for us.
 Therefore, go to page 271 of the datsheet and check the available configurations of __DTRXP__, __CKTXP__ and __BRG16__. Aks yourself how they can be used to realize below requirements.
-1. _RX_ shall be active low
+1. _RX_ shall be active high
 2. _TX_ shall be __idle__ high
 3. 16 Bit Baudrate generator shall be used
 4. Wake-Up shall be disabled
