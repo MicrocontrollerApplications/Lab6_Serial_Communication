@@ -56,9 +56,9 @@ void __init(void) {
     TRISCbits.TRISC7 = 1; // RX as input pin
 
 
-    // sprbg for 19.2 kBaud
+    // spbrg for 19.2 kBaud
     // unsigned int spbrg_value = ??;
-    // sprbg for 115.2 kBaud
+    // spbrg for 115.2 kBaud
     // unsigned int spbrg_value = ??;
     // TODO: configure using plib_usart Open1USART(....)
     // Open1USART()
